@@ -71,7 +71,7 @@ drop table if exists patient;
 
 create table patient (
 	id int auto_increment primary key,
-    guid varchar(32) unique,
+    guid varchar(64) unique,
     patient_id int,
     patient_id_type varchar(64) references patient_id_type
 );

@@ -1,10 +1,12 @@
 package com.nachc.cad.cosmos.upload.excel.basic;
 
 import java.io.InputStream;
+import java.sql.Connection;
 
 import org.junit.Test;
 
 import com.nach.core.util.file.FileUtil;
+import com.nachc.cad.cosmos.util.conn.ConnectionUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +20,8 @@ public class ExcelUploadPatientDataIntegrationTest {
 		InputStream in = FileUtil.getInputStream("/files/excel/no-phi-denver-health-patient-only-2020-08-9.xlsx");
 		String sheetName = "Table 1 - Demographics";
 		log.info("Got inputstream: " + in);
-		new ExcelUploadPatientData().uploadPatientData(in, sheetName);
+		Connection conn = ConnectionUtil.getMysqlConnection();
+		new ExcelUploadPatientData().uploadPatientData(in, sheetName, conn);
 		log.info("Done.");
 	}
 	
