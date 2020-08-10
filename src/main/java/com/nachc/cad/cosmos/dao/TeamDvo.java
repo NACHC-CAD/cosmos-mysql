@@ -22,9 +22,9 @@ public class TeamDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "description",
         "id",
-        "name"
+        "name",
+        "description"
     };
     
     //
@@ -40,9 +40,9 @@ public class TeamDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "description",
         "id",
-        "name"
+        "name",
+        "description"
     };
     
     //
@@ -50,9 +50,9 @@ public class TeamDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Description",
         "Id",
-        "Name"
+        "Name",
+        "Description"
     };
     
     
@@ -62,25 +62,15 @@ public class TeamDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String description;
-    
     private String id;
     
     private String name;
     
+    private String description;
+    
     //
     // trivial getters and setters
     //
-    
-    // description
-    
-    public void setDescription(String str) {
-        this.description = str;
-    }
-    
-    public String getDescription() {
-        return this.description;
-    }
     
     // id
     
@@ -100,6 +90,16 @@ public class TeamDvo implements Dvo {
     
     public String getName() {
         return this.name;
+    }
+    
+    // description
+    
+    public void setDescription(String str) {
+        this.description = str;
+    }
+    
+    public String getDescription() {
+        return this.description;
     }
     
     //

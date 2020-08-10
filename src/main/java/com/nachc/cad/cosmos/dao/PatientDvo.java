@@ -22,8 +22,8 @@ public class PatientDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "guid",
         "id",
+        "guid",
         "patient_id",
         "patient_id_type"
     };
@@ -41,8 +41,8 @@ public class PatientDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "guid",
         "id",
+        "guid",
         "patientId",
         "patientIdType"
     };
@@ -52,8 +52,8 @@ public class PatientDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Guid",
         "Id",
+        "Guid",
         "PatientId",
         "PatientIdType"
     };
@@ -65,9 +65,9 @@ public class PatientDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String guid;
-    
     private String id;
+    
+    private String guid;
     
     private String patientId;
     
@@ -77,16 +77,6 @@ public class PatientDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // guid
-    
-    public void setGuid(String str) {
-        this.guid = str;
-    }
-    
-    public String getGuid() {
-        return this.guid;
-    }
-    
     // id
     
     public void setId(String str) {
@@ -95,6 +85,16 @@ public class PatientDvo implements Dvo {
     
     public String getId() {
         return this.id;
+    }
+    
+    // guid
+    
+    public void setGuid(String str) {
+        this.guid = str;
+    }
+    
+    public String getGuid() {
+        return this.guid;
     }
     
     // patientId

@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import org.yaorma.codeGenerator.generateOrmForSchema.GenerateOrmForSchema;
 
 import com.nach.core.util.file.FileUtil;
+import com.nachc.cad.cosmos.util.conn.ConnectionUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,14 +32,7 @@ public class DvoCodeGenerator {
 	}
 
 	private static Connection getConn() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cosmos", "greshje", "changeme");
-			return conn;
-			// here sonoo is database name, root is username and password
-		} catch(Exception exp) {
-			throw new RuntimeException(exp);
-		}
+		return ConnectionUtil.getMysqlConnection();
 	}
 
 }

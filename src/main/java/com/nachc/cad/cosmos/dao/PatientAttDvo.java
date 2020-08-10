@@ -22,13 +22,13 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "att_type_id",
-        "code_val",
-        "date_val",
         "id",
+        "att_type_id",
         "int_val",
-        "patient_att_type",
-        "text_val"
+        "code_val",
+        "text_val",
+        "date_val",
+        "patient_att_type"
     };
     
     //
@@ -44,13 +44,13 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "attTypeId",
-        "codeVal",
-        "dateVal",
         "id",
+        "attTypeId",
         "intVal",
-        "patientAttType",
-        "textVal"
+        "codeVal",
+        "textVal",
+        "dateVal",
+        "patientAttType"
     };
     
     //
@@ -58,13 +58,13 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "AttTypeId",
-        "CodeVal",
-        "DateVal",
         "Id",
+        "AttTypeId",
         "IntVal",
-        "PatientAttType",
-        "TextVal"
+        "CodeVal",
+        "TextVal",
+        "DateVal",
+        "PatientAttType"
     };
     
     
@@ -74,53 +74,23 @@ public class PatientAttDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String attTypeId;
-    
-    private String codeVal;
-    
-    private String dateVal;
-    
     private String id;
+    
+    private String attTypeId;
     
     private String intVal;
     
-    private String patientAttType;
+    private String codeVal;
     
     private String textVal;
+    
+    private String dateVal;
+    
+    private String patientAttType;
     
     //
     // trivial getters and setters
     //
-    
-    // attTypeId
-    
-    public void setAttTypeId(String str) {
-        this.attTypeId = str;
-    }
-    
-    public String getAttTypeId() {
-        return this.attTypeId;
-    }
-    
-    // codeVal
-    
-    public void setCodeVal(String str) {
-        this.codeVal = str;
-    }
-    
-    public String getCodeVal() {
-        return this.codeVal;
-    }
-    
-    // dateVal
-    
-    public void setDateVal(String str) {
-        this.dateVal = str;
-    }
-    
-    public String getDateVal() {
-        return this.dateVal;
-    }
     
     // id
     
@@ -130,6 +100,16 @@ public class PatientAttDvo implements Dvo {
     
     public String getId() {
         return this.id;
+    }
+    
+    // attTypeId
+    
+    public void setAttTypeId(String str) {
+        this.attTypeId = str;
+    }
+    
+    public String getAttTypeId() {
+        return this.attTypeId;
     }
     
     // intVal
@@ -142,14 +122,14 @@ public class PatientAttDvo implements Dvo {
         return this.intVal;
     }
     
-    // patientAttType
+    // codeVal
     
-    public void setPatientAttType(String str) {
-        this.patientAttType = str;
+    public void setCodeVal(String str) {
+        this.codeVal = str;
     }
     
-    public String getPatientAttType() {
-        return this.patientAttType;
+    public String getCodeVal() {
+        return this.codeVal;
     }
     
     // textVal
@@ -160,6 +140,26 @@ public class PatientAttDvo implements Dvo {
     
     public String getTextVal() {
         return this.textVal;
+    }
+    
+    // dateVal
+    
+    public void setDateVal(String str) {
+        this.dateVal = str;
+    }
+    
+    public String getDateVal() {
+        return this.dateVal;
+    }
+    
+    // patientAttType
+    
+    public void setPatientAttType(String str) {
+        this.patientAttType = str;
+    }
+    
+    public String getPatientAttType() {
+        return this.patientAttType;
     }
     
     //
