@@ -14,3 +14,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 src/main/java/auth/**/*.properties
 src/test/java/auth/**/*.properties
+src/main/resources/auth/**/*.properties
+src/test/resources/auth/**/*.properties
