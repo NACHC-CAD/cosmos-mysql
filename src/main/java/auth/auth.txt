@@ -1,0 +1,10 @@
+# ---
+#
+# Copy and update this file with authentication parameters and rename to:
+# auth.properties
+#
+# ---
+
+mysql-uid=<UID>
+mysql-pwd=<PWD>
+mysql-url=jdbc:mysql://localhost:3306/cosmos

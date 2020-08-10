@@ -14,7 +14,7 @@ create table project (
 
 drop table if exists orgainization;
 
-create table orgainization (
+create table orgainization ( 
 	id int primary key auto_increment,
     name varchar(64) unique,
     description varchar(1028)
@@ -71,6 +71,7 @@ drop table if exists patient;
 
 create table patient (
 	id int auto_increment primary key,
+    guid varchar(32) unique,
     patient_id int,
     patient_id_type varchar(64) references patient_id_type
 );
