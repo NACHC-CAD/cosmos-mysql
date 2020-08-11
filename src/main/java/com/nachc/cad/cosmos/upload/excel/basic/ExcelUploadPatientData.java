@@ -30,16 +30,16 @@ public class ExcelUploadPatientData {
 		Iterator<Row> rows = ExcelUtil.getRows(sheet);
 		int lastRow = sheet.getLastRowNum();
 		log.debug("Uploading rows...");
-		while(rows.hasNext()) {
+		while (rows.hasNext()) {
 			Row row = rows.next();
-			if(row.getRowNum() == 0) {
+			if (row.getRowNum() == 0) {
 				continue;
 			}
 			String patientId = ExcelUtil.getStringValue(row.getCell(0));
-			if(StringUtils.isEmpty(patientId)) {
+			if (StringUtils.isEmpty(patientId)) {
 				continue;
 			}
-			if(row.getRowNum() % 100 == 0) {
+			if (row.getRowNum() % 100 == 0) {
 				log.debug("Processing Row: " + row.getRowNum() + " of " + lastRow);
 			}
 			processRow(row, params, conn);
@@ -61,12 +61,12 @@ public class ExcelUploadPatientData {
 		dvo.setGuid(guid);
 		Dao.insert(dvo, conn);
 	}
-	
+
 	private ArrayList<String> getParameterNames(Sheet sheet) {
 		ArrayList<String> rtn = new ArrayList<String>();
 		Row row = sheet.getRow(0);
 		Iterator<Cell> cells = ExcelUtil.getCells(row);
-		while(cells.hasNext()) {
+		while (cells.hasNext()) {
 			Cell cell = cells.next();
 			String val = cell.getStringCellValue();
 			rtn.add(val);
@@ -74,6 +74,4 @@ public class ExcelUploadPatientData {
 		return rtn;
 	}
 
-	
-	
 }
