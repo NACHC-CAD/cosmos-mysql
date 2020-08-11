@@ -2,7 +2,7 @@
 // Data Value Object (DVO) for data_import
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

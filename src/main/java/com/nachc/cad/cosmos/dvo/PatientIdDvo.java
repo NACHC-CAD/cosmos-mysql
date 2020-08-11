@@ -1,30 +1,31 @@
 //
-// Data Value Object (DVO) for team
+// Data Value Object (DVO) for patient_id
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class TeamDvo implements Dvo {
+public class PatientIdDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "team";
+    public static final String TABLE_NAME = "patient_id";
     
     //
     // columnNames
     //
     
     public static final String[] COLUMN_NAMES = {
+        "data_import_id",
         "id",
-        "name",
-        "description"
+        "patient_id",
+        "patient_id_type"
     };
     
     //
@@ -40,9 +41,10 @@ public class TeamDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "dataImportId",
         "id",
-        "name",
-        "description"
+        "patientId",
+        "patientIdType"
     };
     
     //
@@ -50,9 +52,10 @@ public class TeamDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "DataImportId",
         "Id",
-        "Name",
-        "Description"
+        "PatientId",
+        "PatientIdType"
     };
     
     
@@ -62,15 +65,27 @@ public class TeamDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String dataImportId;
+    
     private String id;
     
-    private String name;
+    private String patientId;
     
-    private String description;
+    private String patientIdType;
     
     //
     // trivial getters and setters
     //
+    
+    // dataImportId
+    
+    public void setDataImportId(String str) {
+        this.dataImportId = str;
+    }
+    
+    public String getDataImportId() {
+        return this.dataImportId;
+    }
     
     // id
     
@@ -82,24 +97,24 @@ public class TeamDvo implements Dvo {
         return this.id;
     }
     
-    // name
+    // patientId
     
-    public void setName(String str) {
-        this.name = str;
+    public void setPatientId(String str) {
+        this.patientId = str;
     }
     
-    public String getName() {
-        return this.name;
+    public String getPatientId() {
+        return this.patientId;
     }
     
-    // description
+    // patientIdType
     
-    public void setDescription(String str) {
-        this.description = str;
+    public void setPatientIdType(String str) {
+        this.patientIdType = str;
     }
     
-    public String getDescription() {
-        return this.description;
+    public String getPatientIdType() {
+        return this.patientIdType;
     }
     
     //

@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.yaorma.database.dao.Dao;
 
 import com.nach.core.util.excel.ExcelUtil;
 import com.nach.core.util.guid.GuidFactory;
@@ -56,10 +55,7 @@ public class ExcelUploadPatientData {
 		String patientIdType = params.get(0);
 		String guid = GuidFactory.getGuid();
 		// add patient
-		PatientDvo dvo = new PatientDvo();
-		dvo.setPatientId(patientId);
-		dvo.setGuid(guid);
-		Dao.insert(dvo, conn);
+		// TODO: Finish this thought
 	}
 
 	private ArrayList<String> getParameterNames(Sheet sheet) {

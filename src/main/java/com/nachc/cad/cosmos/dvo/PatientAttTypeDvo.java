@@ -1,21 +1,21 @@
 //
-// Data Value Object (DVO) for patient_id_type
+// Data Value Object (DVO) for patient_att_type
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientIdTypeDvo implements Dvo {
+public class PatientAttTypeDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient_id_type";
+    public static final String TABLE_NAME = "patient_att_type";
     
     //
     // columnNames
@@ -23,8 +23,10 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "code",
-        "name",
-        "description"
+        "data_import_id",
+        "description",
+        "id",
+        "name"
     };
     
     //
@@ -32,7 +34,7 @@ public class PatientIdTypeDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "code"
+        "id"
     };
     
     //
@@ -41,8 +43,10 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "code",
-        "name",
-        "description"
+        "dataImportId",
+        "description",
+        "id",
+        "name"
     };
     
     //
@@ -51,8 +55,10 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "Code",
-        "Name",
-        "Description"
+        "DataImportId",
+        "Description",
+        "Id",
+        "Name"
     };
     
     
@@ -64,9 +70,13 @@ public class PatientIdTypeDvo implements Dvo {
     
     private String code;
     
-    private String name;
+    private String dataImportId;
     
     private String description;
+    
+    private String id;
+    
+    private String name;
     
     //
     // trivial getters and setters
@@ -82,14 +92,14 @@ public class PatientIdTypeDvo implements Dvo {
         return this.code;
     }
     
-    // name
+    // dataImportId
     
-    public void setName(String str) {
-        this.name = str;
+    public void setDataImportId(String str) {
+        this.dataImportId = str;
     }
     
-    public String getName() {
-        return this.name;
+    public String getDataImportId() {
+        return this.dataImportId;
     }
     
     // description
@@ -100,6 +110,26 @@ public class PatientIdTypeDvo implements Dvo {
     
     public String getDescription() {
         return this.description;
+    }
+    
+    // id
+    
+    public void setId(String str) {
+        this.id = str;
+    }
+    
+    public String getId() {
+        return this.id;
+    }
+    
+    // name
+    
+    public void setName(String str) {
+        this.name = str;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     //

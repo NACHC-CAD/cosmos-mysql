@@ -1,21 +1,21 @@
 //
-// Data Value Object (DVO) for patient
+// Data Value Object (DVO) for patient_att_detail
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientDvo implements Dvo {
+public class PatientAttDetailDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient";
+    public static final String TABLE_NAME = "patient_att_detail";
     
     //
     // columnNames
@@ -23,9 +23,7 @@ public class PatientDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "id",
-        "guid",
-        "patient_id",
-        "patient_id_type"
+        "patient_att_id"
     };
     
     //
@@ -42,9 +40,7 @@ public class PatientDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "id",
-        "guid",
-        "patientId",
-        "patientIdType"
+        "patientAttId"
     };
     
     //
@@ -53,9 +49,7 @@ public class PatientDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "Id",
-        "Guid",
-        "PatientId",
-        "PatientIdType"
+        "PatientAttId"
     };
     
     
@@ -67,11 +61,7 @@ public class PatientDvo implements Dvo {
     
     private String id;
     
-    private String guid;
-    
-    private String patientId;
-    
-    private String patientIdType;
+    private String patientAttId;
     
     //
     // trivial getters and setters
@@ -87,34 +77,14 @@ public class PatientDvo implements Dvo {
         return this.id;
     }
     
-    // guid
+    // patientAttId
     
-    public void setGuid(String str) {
-        this.guid = str;
+    public void setPatientAttId(String str) {
+        this.patientAttId = str;
     }
     
-    public String getGuid() {
-        return this.guid;
-    }
-    
-    // patientId
-    
-    public void setPatientId(String str) {
-        this.patientId = str;
-    }
-    
-    public String getPatientId() {
-        return this.patientId;
-    }
-    
-    // patientIdType
-    
-    public void setPatientIdType(String str) {
-        this.patientIdType = str;
-    }
-    
-    public String getPatientIdType() {
-        return this.patientIdType;
+    public String getPatientAttId() {
+        return this.patientAttId;
     }
     
     //

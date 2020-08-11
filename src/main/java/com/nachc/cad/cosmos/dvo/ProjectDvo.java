@@ -1,29 +1,30 @@
 //
-// Data Value Object (DVO) for patient_att_detail
+// Data Value Object (DVO) for project
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientAttDetailDvo implements Dvo {
+public class ProjectDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient_att_detail";
+    public static final String TABLE_NAME = "project";
     
     //
     // columnNames
     //
     
     public static final String[] COLUMN_NAMES = {
+        "description",
         "id",
-        "patient_att_id"
+        "name"
     };
     
     //
@@ -39,8 +40,9 @@ public class PatientAttDetailDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "description",
         "id",
-        "patientAttId"
+        "name"
     };
     
     //
@@ -48,8 +50,9 @@ public class PatientAttDetailDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "Description",
         "Id",
-        "PatientAttId"
+        "Name"
     };
     
     
@@ -59,13 +62,25 @@ public class PatientAttDetailDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String description;
+    
     private String id;
     
-    private String patientAttId;
+    private String name;
     
     //
     // trivial getters and setters
     //
+    
+    // description
+    
+    public void setDescription(String str) {
+        this.description = str;
+    }
+    
+    public String getDescription() {
+        return this.description;
+    }
     
     // id
     
@@ -77,14 +92,14 @@ public class PatientAttDetailDvo implements Dvo {
         return this.id;
     }
     
-    // patientAttId
+    // name
     
-    public void setPatientAttId(String str) {
-        this.patientAttId = str;
+    public void setName(String str) {
+        this.name = str;
     }
     
-    public String getPatientAttId() {
-        return this.patientAttId;
+    public String getName() {
+        return this.name;
     }
     
     //

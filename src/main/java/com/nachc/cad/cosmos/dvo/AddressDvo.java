@@ -1,34 +1,36 @@
 //
-// Data Value Object (DVO) for patient_att
+// Data Value Object (DVO) for address
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientAttDvo implements Dvo {
+public class AddressDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient_att";
+    public static final String TABLE_NAME = "address";
     
     //
     // columnNames
     //
     
     public static final String[] COLUMN_NAMES = {
+        "city",
+        "county",
         "id",
-        "att_type_id",
-        "int_val",
-        "code_val",
-        "text_val",
-        "date_val",
-        "patient_att_type"
+        "lat",
+        "lon",
+        "state",
+        "street1",
+        "street2",
+        "zip"
     };
     
     //
@@ -44,13 +46,15 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "city",
+        "county",
         "id",
-        "attTypeId",
-        "intVal",
-        "codeVal",
-        "textVal",
-        "dateVal",
-        "patientAttType"
+        "lat",
+        "lon",
+        "state",
+        "street1",
+        "street2",
+        "zip"
     };
     
     //
@@ -58,13 +62,15 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "City",
+        "County",
         "Id",
-        "AttTypeId",
-        "IntVal",
-        "CodeVal",
-        "TextVal",
-        "DateVal",
-        "PatientAttType"
+        "Lat",
+        "Lon",
+        "State",
+        "Street1",
+        "Street2",
+        "Zip"
     };
     
     
@@ -74,23 +80,47 @@ public class PatientAttDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String city;
+    
+    private String county;
+    
     private String id;
     
-    private String attTypeId;
+    private String lat;
     
-    private String intVal;
+    private String lon;
     
-    private String codeVal;
+    private String state;
     
-    private String textVal;
+    private String street1;
     
-    private String dateVal;
+    private String street2;
     
-    private String patientAttType;
+    private String zip;
     
     //
     // trivial getters and setters
     //
+    
+    // city
+    
+    public void setCity(String str) {
+        this.city = str;
+    }
+    
+    public String getCity() {
+        return this.city;
+    }
+    
+    // county
+    
+    public void setCounty(String str) {
+        this.county = str;
+    }
+    
+    public String getCounty() {
+        return this.county;
+    }
     
     // id
     
@@ -102,64 +132,64 @@ public class PatientAttDvo implements Dvo {
         return this.id;
     }
     
-    // attTypeId
+    // lat
     
-    public void setAttTypeId(String str) {
-        this.attTypeId = str;
+    public void setLat(String str) {
+        this.lat = str;
     }
     
-    public String getAttTypeId() {
-        return this.attTypeId;
+    public String getLat() {
+        return this.lat;
     }
     
-    // intVal
+    // lon
     
-    public void setIntVal(String str) {
-        this.intVal = str;
+    public void setLon(String str) {
+        this.lon = str;
     }
     
-    public String getIntVal() {
-        return this.intVal;
+    public String getLon() {
+        return this.lon;
     }
     
-    // codeVal
+    // state
     
-    public void setCodeVal(String str) {
-        this.codeVal = str;
+    public void setState(String str) {
+        this.state = str;
     }
     
-    public String getCodeVal() {
-        return this.codeVal;
+    public String getState() {
+        return this.state;
     }
     
-    // textVal
+    // street1
     
-    public void setTextVal(String str) {
-        this.textVal = str;
+    public void setStreet1(String str) {
+        this.street1 = str;
     }
     
-    public String getTextVal() {
-        return this.textVal;
+    public String getStreet1() {
+        return this.street1;
     }
     
-    // dateVal
+    // street2
     
-    public void setDateVal(String str) {
-        this.dateVal = str;
+    public void setStreet2(String str) {
+        this.street2 = str;
     }
     
-    public String getDateVal() {
-        return this.dateVal;
+    public String getStreet2() {
+        return this.street2;
     }
     
-    // patientAttType
+    // zip
     
-    public void setPatientAttType(String str) {
-        this.patientAttType = str;
+    public void setZip(String str) {
+        this.zip = str;
     }
     
-    public String getPatientAttType() {
-        return this.patientAttType;
+    public String getZip() {
+        return this.zip;
     }
     
     //

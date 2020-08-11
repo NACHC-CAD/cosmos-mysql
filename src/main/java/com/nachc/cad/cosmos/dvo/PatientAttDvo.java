@@ -1,30 +1,34 @@
 //
-// Data Value Object (DVO) for patient_att_det_type
+// Data Value Object (DVO) for patient_att
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientAttDetTypeDvo implements Dvo {
+public class PatientAttDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient_att_det_type";
+    public static final String TABLE_NAME = "patient_att";
     
     //
     // columnNames
     //
     
     public static final String[] COLUMN_NAMES = {
+        "att_type_id",
+        "code_val",
+        "date_val",
         "id",
-        "name",
-        "description"
+        "int_val",
+        "patient_att_type",
+        "text_val"
     };
     
     //
@@ -40,9 +44,13 @@ public class PatientAttDetTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "attTypeId",
+        "codeVal",
+        "dateVal",
         "id",
-        "name",
-        "description"
+        "intVal",
+        "patientAttType",
+        "textVal"
     };
     
     //
@@ -50,9 +58,13 @@ public class PatientAttDetTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "AttTypeId",
+        "CodeVal",
+        "DateVal",
         "Id",
-        "Name",
-        "Description"
+        "IntVal",
+        "PatientAttType",
+        "TextVal"
     };
     
     
@@ -62,15 +74,53 @@ public class PatientAttDetTypeDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String attTypeId;
+    
+    private String codeVal;
+    
+    private String dateVal;
+    
     private String id;
     
-    private String name;
+    private String intVal;
     
-    private String description;
+    private String patientAttType;
+    
+    private String textVal;
     
     //
     // trivial getters and setters
     //
+    
+    // attTypeId
+    
+    public void setAttTypeId(String str) {
+        this.attTypeId = str;
+    }
+    
+    public String getAttTypeId() {
+        return this.attTypeId;
+    }
+    
+    // codeVal
+    
+    public void setCodeVal(String str) {
+        this.codeVal = str;
+    }
+    
+    public String getCodeVal() {
+        return this.codeVal;
+    }
+    
+    // dateVal
+    
+    public void setDateVal(String str) {
+        this.dateVal = str;
+    }
+    
+    public String getDateVal() {
+        return this.dateVal;
+    }
     
     // id
     
@@ -82,24 +132,34 @@ public class PatientAttDetTypeDvo implements Dvo {
         return this.id;
     }
     
-    // name
+    // intVal
     
-    public void setName(String str) {
-        this.name = str;
+    public void setIntVal(String str) {
+        this.intVal = str;
     }
     
-    public String getName() {
-        return this.name;
+    public String getIntVal() {
+        return this.intVal;
     }
     
-    // description
+    // patientAttType
     
-    public void setDescription(String str) {
-        this.description = str;
+    public void setPatientAttType(String str) {
+        this.patientAttType = str;
     }
     
-    public String getDescription() {
-        return this.description;
+    public String getPatientAttType() {
+        return this.patientAttType;
+    }
+    
+    // textVal
+    
+    public void setTextVal(String str) {
+        this.textVal = str;
+    }
+    
+    public String getTextVal() {
+        return this.textVal;
     }
     
     //

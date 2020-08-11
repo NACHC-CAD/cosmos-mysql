@@ -1,30 +1,30 @@
 //
-// Data Value Object (DVO) for patient_id_types
+// Data Value Object (DVO) for orgainization
 //
 
-package com.nachc.cad.cosmos.dao;
+package com.nachc.cad.cosmos.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class PatientIdTypesDvo implements Dvo {
+public class OrgainizationDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "patient_id_types";
+    public static final String TABLE_NAME = "orgainization";
     
     //
     // columnNames
     //
     
     public static final String[] COLUMN_NAMES = {
-        "code",
-        "name",
-        "description"
+        "description",
+        "id",
+        "name"
     };
     
     //
@@ -32,7 +32,7 @@ public class PatientIdTypesDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "code"
+        "id"
     };
     
     //
@@ -40,9 +40,9 @@ public class PatientIdTypesDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "code",
-        "name",
-        "description"
+        "description",
+        "id",
+        "name"
     };
     
     //
@@ -50,9 +50,9 @@ public class PatientIdTypesDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Code",
-        "Name",
-        "Description"
+        "Description",
+        "Id",
+        "Name"
     };
     
     
@@ -62,24 +62,34 @@ public class PatientIdTypesDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String code;
+    private String description;
+    
+    private String id;
     
     private String name;
-    
-    private String description;
     
     //
     // trivial getters and setters
     //
     
-    // code
+    // description
     
-    public void setCode(String str) {
-        this.code = str;
+    public void setDescription(String str) {
+        this.description = str;
     }
     
-    public String getCode() {
-        return this.code;
+    public String getDescription() {
+        return this.description;
+    }
+    
+    // id
+    
+    public void setId(String str) {
+        this.id = str;
+    }
+    
+    public String getId() {
+        return this.id;
     }
     
     // name
@@ -90,16 +100,6 @@ public class PatientIdTypesDvo implements Dvo {
     
     public String getName() {
         return this.name;
-    }
-    
-    // description
-    
-    public void setDescription(String str) {
-        this.description = str;
-    }
-    
-    public String getDescription() {
-        return this.description;
     }
     
     //

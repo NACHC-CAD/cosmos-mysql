@@ -19,8 +19,8 @@ public class DvoCodeGenerator {
 		try {
 			conn = getConn();
 			String schemaName = "cosmos";
-			String packageName = "com.nachc.cad.cosmos.dao";
-			File destDir = FileUtil.getFile("src/main/java/com/nachc/cad/cosmos/dao");
+			String packageName = "com.nachc.cad.cosmos.dvo";
+			File destDir = FileUtil.getFile("src/main/java/com/nachc/cad/cosmos/dvo");
 			log.info("Writing files to: " + destDir.getCanonicalPath());
 			GenerateOrmForSchema.execute(conn, schemaName, packageName, destDir);
 			log.info("Done!");
