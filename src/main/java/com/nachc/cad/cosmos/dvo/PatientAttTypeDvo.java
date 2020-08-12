@@ -23,11 +23,11 @@ public class PatientAttTypeDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "code",
-        "data_set_id",
         "description",
         "guid",
         "id",
-        "name"
+        "name",
+        "project_id"
     };
     
     //
@@ -44,11 +44,11 @@ public class PatientAttTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "code",
-        "dataSetId",
         "description",
         "guid",
         "id",
-        "name"
+        "name",
+        "projectId"
     };
     
     //
@@ -57,11 +57,11 @@ public class PatientAttTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "Code",
-        "DataSetId",
         "Description",
         "Guid",
         "Id",
-        "Name"
+        "Name",
+        "ProjectId"
     };
     
     
@@ -73,8 +73,6 @@ public class PatientAttTypeDvo implements Dvo {
     
     private String code;
     
-    private String dataSetId;
-    
     private String description;
     
     private String guid;
@@ -82,6 +80,8 @@ public class PatientAttTypeDvo implements Dvo {
     private String id;
     
     private String name;
+    
+    private String projectId;
     
     //
     // trivial getters and setters
@@ -95,16 +95,6 @@ public class PatientAttTypeDvo implements Dvo {
     
     public String getCode() {
         return this.code;
-    }
-    
-    // dataSetId
-    
-    public void setDataSetId(String str) {
-        this.dataSetId = str;
-    }
-    
-    public String getDataSetId() {
-        return this.dataSetId;
     }
     
     // description
@@ -145,6 +135,16 @@ public class PatientAttTypeDvo implements Dvo {
     
     public String getName() {
         return this.name;
+    }
+    
+    // projectId
+    
+    public void setProjectId(String str) {
+        this.projectId = str;
+    }
+    
+    public String getProjectId() {
+        return this.projectId;
     }
     
     //

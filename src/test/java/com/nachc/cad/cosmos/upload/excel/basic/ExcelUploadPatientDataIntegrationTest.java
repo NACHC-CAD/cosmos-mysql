@@ -26,9 +26,8 @@ public class ExcelUploadPatientDataIntegrationTest {
 		Connection conn = ConnectionUtil.getMysqlConnection();
 		log.info("Getting data set");
 		DataSetDvo dataSetDvo = DataSetProxy.createTestDataSet(conn);
-		String dataSetId = dataSetDvo.getId();
 		log.info("Starting upload");
-		new ExcelUploadPatientData().uploadPatientData(in, sheetName, dataSetId, conn);
+		new ExcelUploadPatientData().uploadPatientData(in, sheetName, dataSetDvo, conn);
 		log.info("Done.");
 	}
 	

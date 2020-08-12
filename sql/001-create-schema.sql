@@ -103,7 +103,7 @@ drop table if exists patient_att_type;
 create table patient_att_type (
 	id int primary key auto_increment,
     guid varchar(64) unique,
-    data_set_id int references data_set,
+    project_id int references project,
 	code varchar(256),
     name varchar(256),
     description varchar(1028)
@@ -214,3 +214,6 @@ from
 	patient pat
     join patient_att att where att.patient_id = pat.id and att.att_type_id = 3
 ;
+
+
+

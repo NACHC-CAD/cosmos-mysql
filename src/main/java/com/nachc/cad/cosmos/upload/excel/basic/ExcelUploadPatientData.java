@@ -15,9 +15,11 @@ import org.yaorma.database.Database;
 import com.nach.core.util.excel.ExcelUtil;
 import com.nach.core.util.excel.enumeration.ExcelCellType;
 import com.nach.core.util.guid.GuidFactory;
+import com.nachc.cad.cosmos.dvo.DataSetDvo;
 import com.nachc.cad.cosmos.dvo.PatientAttDvo;
 import com.nachc.cad.cosmos.dvo.PatientAttTypeDvo;
 import com.nachc.cad.cosmos.dvo.PatientDvo;
+import com.nachc.cad.cosmos.util.proxy.PatientAttTypeProxy;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +33,7 @@ public class ExcelUploadPatientData {
 	 * First row is the names of the parameters
 	 * 
 	 */
-	public void uploadPatientData(InputStream in, String sheetName, String dataSetId, Connection conn) {
+	public void uploadPatientData(InputStream in, String sheetName, DataSetDvo dataSetDvo, Connection conn) {
 		// get the excel sheet
 		log.debug("Getting sheet");
 		Sheet sheet = ExcelUtil.getSheet(in, sheetName);
@@ -39,7 +41,7 @@ public class ExcelUploadPatientData {
 		// get the parameter names from the first row of the sheet and add them to the database
 		log.debug("Getting params");
 		ArrayList<String> paramNames = getParameterNames(sheet);
-		ArrayList<PatientAttTypeDvo> params = addPatientAttTypes(paramNames, dataSetId, conn);
+		ArrayList<PatientAttTypeDvo> params = addPatientAttTypes(paramNames, dataSetDvo, conn);
 		// iterate through each row of the sheet
 		log.debug("Getting rows");
 		Iterator<Row> rows = ExcelUtil.getRows(sheet);
@@ -63,7 +65,7 @@ public class ExcelUploadPatientData {
 				log.debug("Processing Row: " + row.getRowNum() + " of " + lastRow);
 			}
 			// process the row
-			processRow(row, params, dataSetId, conn);
+			processRow(row, params, dataSetDvo.getId(), conn);
 		}
 		// done
 		log.debug("Done uploading data for sheet: " + sheet.getSheetName());
@@ -100,7 +102,31 @@ public class ExcelUploadPatientData {
 	//
 	// ------------------------------------------------------------------------
 	
-	
+	//
+	// add att types
+	//
+
+	private ArrayList<PatientAttTypeDvo> addPatientAttTypes(ArrayList<String> params, DataSetDvo dataSetDvo, Connection conn) {
+		log.info("Adding " + params.size() + " attribute types");
+		String projectId = dataSetDvo.getProjectId();
+		ArrayList<PatientAttTypeDvo> rtn = new ArrayList<PatientAttTypeDvo>();
+		for (int i = 0; i < params.size(); i++) {
+			String param = params.get(i);
+			PatientAttTypeDvo dvo = PatientAttTypeProxy.findForProjectAndCode(projectId, param, conn);
+			if(dvo == null) {
+				dvo = new PatientAttTypeDvo();
+				dvo.setProjectId(projectId);
+				dvo.setCode(param);
+				dvo.setName(param);
+				dvo.setGuid(GuidFactory.getGuid());
+				dvo = Dao.insert(dvo, "guid", dvo.getGuid(), conn);
+			}
+			rtn.add(dvo);
+		}
+		log.info("Added  " + rtn.size() + " attribute types");
+		return rtn;
+	}
+
 	//
 	// add the patient
 	//
@@ -115,27 +141,6 @@ public class ExcelUploadPatientData {
 		dvo.setPatientId(patientId);
 		dvo = Dao.insert(dvo, "guid", guid, conn);
 		return dvo;
-	}
-
-	//
-	// add att types
-	//
-
-	private ArrayList<PatientAttTypeDvo> addPatientAttTypes(ArrayList<String> params, String dataSetId, Connection conn) {
-		log.info("Adding " + params.size() + " attribute types");
-		ArrayList<PatientAttTypeDvo> rtn = new ArrayList<PatientAttTypeDvo>();
-		for (int i = 0; i < params.size(); i++) {
-			String param = params.get(i);
-			PatientAttTypeDvo dvo = new PatientAttTypeDvo();
-			dvo.setDataSetId(dataSetId);
-			dvo.setCode(param);
-			dvo.setName(param);
-			dvo.setGuid(GuidFactory.getGuid());
-			dvo = Dao.insert(dvo, "guid", dvo.getGuid(), conn);
-			rtn.add(dvo);
-		}
-		log.info("Added  " + rtn.size() + " attribute types");
-		return rtn;
 	}
 
 	//

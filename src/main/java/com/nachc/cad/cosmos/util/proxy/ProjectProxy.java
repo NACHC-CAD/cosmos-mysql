@@ -11,7 +11,7 @@ public class ProjectProxy {
 	public static ProjectDvo findTestingProject(Connection conn) {
 		String name = "Testing";
 		ProjectDvo dvo = new ProjectDvo();
-		dvo = Database.find(dvo, "name", "Testing", conn);
+		dvo = Database.find(dvo, "name", "Testing: Contraception", conn);
 		return dvo;
 	}
 	
