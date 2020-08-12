@@ -12,6 +12,18 @@ create table project (
     description varchar(1028)
 );
 
+insert into project values (1, 'Testing', 'A project for testing purposes.  Data from this project should not be considered as "Production" data.');
+
+drop table if exists data_set;
+
+create table data_set (
+	id int primary key auto_increment,
+    guid varchar(64) unique,
+    project_id int references project,
+    name varchar(64),
+    description varchar(1028)
+);
+
 drop table if exists orgainization;
 
 create table orgainization ( 
@@ -72,6 +84,7 @@ drop table if exists patient;
 create table patient (
 	id int auto_increment primary key,
     guid varchar(64) unique,
+    data_set_id int references data_set,
     patient_id int,
     patient_id_type varchar(64) references patient_id_type
 );
@@ -122,3 +135,21 @@ create table patient_att_detail (
     patient_att_id int references patient_att
 );
 
+truncate table patient;
+
+select * from patient;
+
+select * from project;
+
+select * from data_set;
+
+select * from patient;
+
+select
+	data_set_id,
+    count(*)
+from
+	patient
+group by 1
+order by 1
+;

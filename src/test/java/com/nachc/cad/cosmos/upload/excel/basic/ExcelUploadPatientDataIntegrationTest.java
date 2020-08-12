@@ -6,7 +6,9 @@ import java.sql.Connection;
 import org.junit.Test;
 
 import com.nach.core.util.file.FileUtil;
+import com.nachc.cad.cosmos.dvo.DataSetDvo;
 import com.nachc.cad.cosmos.util.conn.ConnectionUtil;
+import com.nachc.cad.cosmos.util.proxy.DataSetProxy;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,8 +22,13 @@ public class ExcelUploadPatientDataIntegrationTest {
 		InputStream in = FileUtil.getInputStream("/files/excel/no-phi-denver-health-patient-only-2020-08-9.xlsx");
 		String sheetName = "Table 1 - Demographics";
 		log.info("Got inputstream: " + in);
+		log.info("Getting connection");
 		Connection conn = ConnectionUtil.getMysqlConnection();
-		new ExcelUploadPatientData().uploadPatientData(in, sheetName, conn);
+		log.info("Getting data set");
+		DataSetDvo dataSetDvo = DataSetProxy.createTestDataSet(conn);
+		String dataSetId = dataSetDvo.getId();
+		log.info("Starting upload");
+		new ExcelUploadPatientData().uploadPatientData(in, sheetName, dataSetId, conn);
 		log.info("Done.");
 	}
 	

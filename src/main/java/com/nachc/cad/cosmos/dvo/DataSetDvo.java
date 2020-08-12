@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for address
+// Data Value Object (DVO) for data_set
 //
 
 package com.nachc.cad.cosmos.dvo;
@@ -9,13 +9,13 @@ import java.util.HashMap;
 
 import org.yaorma.dvo.Dvo;
 
-public class AddressDvo implements Dvo {
+public class DataSetDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "address";
+    public static final String TABLE_NAME = "data_set";
     
     //
     // columnNames
@@ -23,14 +23,10 @@ public class AddressDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "id",
-        "street1",
-        "street2",
-        "city",
-        "county",
-        "state",
-        "zip",
-        "lat",
-        "lon"
+        "guid",
+        "project_id",
+        "name",
+        "description"
     };
     
     //
@@ -47,14 +43,10 @@ public class AddressDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "id",
-        "street1",
-        "street2",
-        "city",
-        "county",
-        "state",
-        "zip",
-        "lat",
-        "lon"
+        "guid",
+        "projectId",
+        "name",
+        "description"
     };
     
     //
@@ -63,14 +55,10 @@ public class AddressDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "Id",
-        "Street1",
-        "Street2",
-        "City",
-        "County",
-        "State",
-        "Zip",
-        "Lat",
-        "Lon"
+        "Guid",
+        "ProjectId",
+        "Name",
+        "Description"
     };
     
     
@@ -82,21 +70,13 @@ public class AddressDvo implements Dvo {
     
     private String id;
     
-    private String street1;
+    private String guid;
     
-    private String street2;
+    private String projectId;
     
-    private String city;
+    private String name;
     
-    private String county;
-    
-    private String state;
-    
-    private String zip;
-    
-    private String lat;
-    
-    private String lon;
+    private String description;
     
     //
     // trivial getters and setters
@@ -112,84 +92,44 @@ public class AddressDvo implements Dvo {
         return this.id;
     }
     
-    // street1
+    // guid
     
-    public void setStreet1(String str) {
-        this.street1 = str;
+    public void setGuid(String str) {
+        this.guid = str;
     }
     
-    public String getStreet1() {
-        return this.street1;
+    public String getGuid() {
+        return this.guid;
     }
     
-    // street2
+    // projectId
     
-    public void setStreet2(String str) {
-        this.street2 = str;
+    public void setProjectId(String str) {
+        this.projectId = str;
     }
     
-    public String getStreet2() {
-        return this.street2;
+    public String getProjectId() {
+        return this.projectId;
     }
     
-    // city
+    // name
     
-    public void setCity(String str) {
-        this.city = str;
+    public void setName(String str) {
+        this.name = str;
     }
     
-    public String getCity() {
-        return this.city;
+    public String getName() {
+        return this.name;
     }
     
-    // county
+    // description
     
-    public void setCounty(String str) {
-        this.county = str;
+    public void setDescription(String str) {
+        this.description = str;
     }
     
-    public String getCounty() {
-        return this.county;
-    }
-    
-    // state
-    
-    public void setState(String str) {
-        this.state = str;
-    }
-    
-    public String getState() {
-        return this.state;
-    }
-    
-    // zip
-    
-    public void setZip(String str) {
-        this.zip = str;
-    }
-    
-    public String getZip() {
-        return this.zip;
-    }
-    
-    // lat
-    
-    public void setLat(String str) {
-        this.lat = str;
-    }
-    
-    public String getLat() {
-        return this.lat;
-    }
-    
-    // lon
-    
-    public void setLon(String str) {
-        this.lon = str;
-    }
-    
-    public String getLon() {
-        return this.lon;
+    public String getDescription() {
+        return this.description;
     }
     
     //

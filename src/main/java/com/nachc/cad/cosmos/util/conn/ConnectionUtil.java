@@ -12,7 +12,7 @@ public class ConnectionUtil {
 			String url = AuthParams.getMysqlUrl();
 			String uid = AuthParams.getMysqlUid();
 			String pwd = AuthParams.getMysqlPwd();
-			Class.forName("com.mysql.jdbc.Driver");
+			// Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
 			return conn;
 		} catch(Exception exp) {

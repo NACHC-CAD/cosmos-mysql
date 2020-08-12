@@ -22,11 +22,11 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "code",
-        "data_import_id",
-        "description",
         "id",
-        "name"
+        "data_import_id",
+        "code",
+        "name",
+        "description"
     };
     
     //
@@ -42,11 +42,11 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "code",
-        "dataImportId",
-        "description",
         "id",
-        "name"
+        "dataImportId",
+        "code",
+        "name",
+        "description"
     };
     
     //
@@ -54,11 +54,11 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Code",
-        "DataImportId",
-        "Description",
         "Id",
-        "Name"
+        "DataImportId",
+        "Code",
+        "Name",
+        "Description"
     };
     
     
@@ -68,28 +68,28 @@ public class PatientAttTypeDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String code;
+    private String id;
     
     private String dataImportId;
     
-    private String description;
-    
-    private String id;
+    private String code;
     
     private String name;
+    
+    private String description;
     
     //
     // trivial getters and setters
     //
     
-    // code
+    // id
     
-    public void setCode(String str) {
-        this.code = str;
+    public void setId(String str) {
+        this.id = str;
     }
     
-    public String getCode() {
-        return this.code;
+    public String getId() {
+        return this.id;
     }
     
     // dataImportId
@@ -102,24 +102,14 @@ public class PatientAttTypeDvo implements Dvo {
         return this.dataImportId;
     }
     
-    // description
+    // code
     
-    public void setDescription(String str) {
-        this.description = str;
+    public void setCode(String str) {
+        this.code = str;
     }
     
-    public String getDescription() {
-        return this.description;
-    }
-    
-    // id
-    
-    public void setId(String str) {
-        this.id = str;
-    }
-    
-    public String getId() {
-        return this.id;
+    public String getCode() {
+        return this.code;
     }
     
     // name
@@ -130,6 +120,16 @@ public class PatientAttTypeDvo implements Dvo {
     
     public String getName() {
         return this.name;
+    }
+    
+    // description
+    
+    public void setDescription(String str) {
+        this.description = str;
+    }
+    
+    public String getDescription() {
+        return this.description;
     }
     
     //

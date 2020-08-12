@@ -2,7 +2,6 @@ package codegenerator.yaorma;
 
 import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
 
 import org.yaorma.codeGenerator.generateOrmForSchema.GenerateOrmForSchema;
 
@@ -21,7 +20,13 @@ public class DvoCodeGenerator {
 			String schemaName = "cosmos";
 			String packageName = "com.nachc.cad.cosmos.dvo";
 			File destDir = FileUtil.getFile("src/main/java/com/nachc/cad/cosmos/dvo");
-			log.info("Writing files to: " + destDir.getCanonicalPath());
+			if(destDir.exists()) {
+				log.info("Deleting dir:\t" + destDir.getCanonicalPath());
+				destDir.delete();
+			}
+			log.info("Creating dir:\t" + destDir.getCanonicalPath());
+			destDir.mkdir();
+			log.info("Writing to:\t" + destDir.getCanonicalPath());
 			GenerateOrmForSchema.execute(conn, schemaName, packageName, destDir);
 			log.info("Done!");
 		} finally {
