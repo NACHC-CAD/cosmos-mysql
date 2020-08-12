@@ -22,11 +22,11 @@ public class DataSetDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "id",
+        "description",
         "guid",
-        "project_id",
+        "id",
         "name",
-        "description"
+        "project_id"
     };
     
     //
@@ -42,11 +42,11 @@ public class DataSetDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "id",
+        "description",
         "guid",
-        "projectId",
+        "id",
         "name",
-        "description"
+        "projectId"
     };
     
     //
@@ -54,11 +54,11 @@ public class DataSetDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Id",
+        "Description",
         "Guid",
-        "ProjectId",
+        "Id",
         "Name",
-        "Description"
+        "ProjectId"
     };
     
     
@@ -68,28 +68,28 @@ public class DataSetDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String id;
+    private String description;
     
     private String guid;
     
-    private String projectId;
+    private String id;
     
     private String name;
     
-    private String description;
+    private String projectId;
     
     //
     // trivial getters and setters
     //
     
-    // id
+    // description
     
-    public void setId(String str) {
-        this.id = str;
+    public void setDescription(String str) {
+        this.description = str;
     }
     
-    public String getId() {
-        return this.id;
+    public String getDescription() {
+        return this.description;
     }
     
     // guid
@@ -102,14 +102,14 @@ public class DataSetDvo implements Dvo {
         return this.guid;
     }
     
-    // projectId
+    // id
     
-    public void setProjectId(String str) {
-        this.projectId = str;
+    public void setId(String str) {
+        this.id = str;
     }
     
-    public String getProjectId() {
-        return this.projectId;
+    public String getId() {
+        return this.id;
     }
     
     // name
@@ -122,14 +122,14 @@ public class DataSetDvo implements Dvo {
         return this.name;
     }
     
-    // description
+    // projectId
     
-    public void setDescription(String str) {
-        this.description = str;
+    public void setProjectId(String str) {
+        this.projectId = str;
     }
     
-    public String getDescription() {
-        return this.description;
+    public String getProjectId() {
+        return this.projectId;
     }
     
     //

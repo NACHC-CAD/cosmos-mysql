@@ -22,13 +22,18 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "id",
         "att_type_id",
-        "int_val",
         "code_val",
-        "text_val",
+        "data_set_id",
+        "data_type",
         "date_val",
-        "patient_att_type"
+        "id",
+        "num_val",
+        "patient_id",
+        "ref_code",
+        "ref_entity",
+        "ref_key",
+        "string_val"
     };
     
     //
@@ -44,13 +49,18 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "id",
         "attTypeId",
-        "intVal",
         "codeVal",
-        "textVal",
+        "dataSetId",
+        "dataType",
         "dateVal",
-        "patientAttType"
+        "id",
+        "numVal",
+        "patientId",
+        "refCode",
+        "refEntity",
+        "refKey",
+        "stringVal"
     };
     
     //
@@ -58,13 +68,18 @@ public class PatientAttDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Id",
         "AttTypeId",
-        "IntVal",
         "CodeVal",
-        "TextVal",
+        "DataSetId",
+        "DataType",
         "DateVal",
-        "PatientAttType"
+        "Id",
+        "NumVal",
+        "PatientId",
+        "RefCode",
+        "RefEntity",
+        "RefKey",
+        "StringVal"
     };
     
     
@@ -74,33 +89,33 @@ public class PatientAttDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String id;
-    
     private String attTypeId;
-    
-    private String intVal;
     
     private String codeVal;
     
-    private String textVal;
+    private String dataSetId;
+    
+    private String dataType;
     
     private String dateVal;
     
-    private String patientAttType;
+    private String id;
+    
+    private String numVal;
+    
+    private String patientId;
+    
+    private String refCode;
+    
+    private String refEntity;
+    
+    private String refKey;
+    
+    private String stringVal;
     
     //
     // trivial getters and setters
     //
-    
-    // id
-    
-    public void setId(String str) {
-        this.id = str;
-    }
-    
-    public String getId() {
-        return this.id;
-    }
     
     // attTypeId
     
@@ -110,16 +125,6 @@ public class PatientAttDvo implements Dvo {
     
     public String getAttTypeId() {
         return this.attTypeId;
-    }
-    
-    // intVal
-    
-    public void setIntVal(String str) {
-        this.intVal = str;
-    }
-    
-    public String getIntVal() {
-        return this.intVal;
     }
     
     // codeVal
@@ -132,14 +137,24 @@ public class PatientAttDvo implements Dvo {
         return this.codeVal;
     }
     
-    // textVal
+    // dataSetId
     
-    public void setTextVal(String str) {
-        this.textVal = str;
+    public void setDataSetId(String str) {
+        this.dataSetId = str;
     }
     
-    public String getTextVal() {
-        return this.textVal;
+    public String getDataSetId() {
+        return this.dataSetId;
+    }
+    
+    // dataType
+    
+    public void setDataType(String str) {
+        this.dataType = str;
+    }
+    
+    public String getDataType() {
+        return this.dataType;
     }
     
     // dateVal
@@ -152,14 +167,74 @@ public class PatientAttDvo implements Dvo {
         return this.dateVal;
     }
     
-    // patientAttType
+    // id
     
-    public void setPatientAttType(String str) {
-        this.patientAttType = str;
+    public void setId(String str) {
+        this.id = str;
     }
     
-    public String getPatientAttType() {
-        return this.patientAttType;
+    public String getId() {
+        return this.id;
+    }
+    
+    // numVal
+    
+    public void setNumVal(String str) {
+        this.numVal = str;
+    }
+    
+    public String getNumVal() {
+        return this.numVal;
+    }
+    
+    // patientId
+    
+    public void setPatientId(String str) {
+        this.patientId = str;
+    }
+    
+    public String getPatientId() {
+        return this.patientId;
+    }
+    
+    // refCode
+    
+    public void setRefCode(String str) {
+        this.refCode = str;
+    }
+    
+    public String getRefCode() {
+        return this.refCode;
+    }
+    
+    // refEntity
+    
+    public void setRefEntity(String str) {
+        this.refEntity = str;
+    }
+    
+    public String getRefEntity() {
+        return this.refEntity;
+    }
+    
+    // refKey
+    
+    public void setRefKey(String str) {
+        this.refKey = str;
+    }
+    
+    public String getRefKey() {
+        return this.refKey;
+    }
+    
+    // stringVal
+    
+    public void setStringVal(String str) {
+        this.stringVal = str;
+    }
+    
+    public String getStringVal() {
+        return this.stringVal;
     }
     
     //

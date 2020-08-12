@@ -22,11 +22,12 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "id",
-        "data_import_id",
         "code",
-        "name",
-        "description"
+        "data_set_id",
+        "description",
+        "guid",
+        "id",
+        "name"
     };
     
     //
@@ -42,11 +43,12 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "id",
-        "dataImportId",
         "code",
-        "name",
-        "description"
+        "dataSetId",
+        "description",
+        "guid",
+        "id",
+        "name"
     };
     
     //
@@ -54,11 +56,12 @@ public class PatientAttTypeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Id",
-        "DataImportId",
         "Code",
-        "Name",
-        "Description"
+        "DataSetId",
+        "Description",
+        "Guid",
+        "Id",
+        "Name"
     };
     
     
@@ -68,39 +71,21 @@ public class PatientAttTypeDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String id;
-    
-    private String dataImportId;
-    
     private String code;
     
-    private String name;
+    private String dataSetId;
     
     private String description;
+    
+    private String guid;
+    
+    private String id;
+    
+    private String name;
     
     //
     // trivial getters and setters
     //
-    
-    // id
-    
-    public void setId(String str) {
-        this.id = str;
-    }
-    
-    public String getId() {
-        return this.id;
-    }
-    
-    // dataImportId
-    
-    public void setDataImportId(String str) {
-        this.dataImportId = str;
-    }
-    
-    public String getDataImportId() {
-        return this.dataImportId;
-    }
     
     // code
     
@@ -112,14 +97,14 @@ public class PatientAttTypeDvo implements Dvo {
         return this.code;
     }
     
-    // name
+    // dataSetId
     
-    public void setName(String str) {
-        this.name = str;
+    public void setDataSetId(String str) {
+        this.dataSetId = str;
     }
     
-    public String getName() {
-        return this.name;
+    public String getDataSetId() {
+        return this.dataSetId;
     }
     
     // description
@@ -130,6 +115,36 @@ public class PatientAttTypeDvo implements Dvo {
     
     public String getDescription() {
         return this.description;
+    }
+    
+    // guid
+    
+    public void setGuid(String str) {
+        this.guid = str;
+    }
+    
+    public String getGuid() {
+        return this.guid;
+    }
+    
+    // id
+    
+    public void setId(String str) {
+        this.id = str;
+    }
+    
+    public String getId() {
+        return this.id;
+    }
+    
+    // name
+    
+    public void setName(String str) {
+        this.name = str;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     //

@@ -22,15 +22,15 @@ public class AddressDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "id",
-        "street1",
-        "street2",
         "city",
         "county",
-        "state",
-        "zip",
+        "id",
         "lat",
-        "lon"
+        "lon",
+        "state",
+        "street1",
+        "street2",
+        "zip"
     };
     
     //
@@ -46,15 +46,15 @@ public class AddressDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "id",
-        "street1",
-        "street2",
         "city",
         "county",
-        "state",
-        "zip",
+        "id",
         "lat",
-        "lon"
+        "lon",
+        "state",
+        "street1",
+        "street2",
+        "zip"
     };
     
     //
@@ -62,15 +62,15 @@ public class AddressDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "Id",
-        "Street1",
-        "Street2",
         "City",
         "County",
-        "State",
-        "Zip",
+        "Id",
         "Lat",
-        "Lon"
+        "Lon",
+        "State",
+        "Street1",
+        "Street2",
+        "Zip"
     };
     
     
@@ -80,27 +80,47 @@ public class AddressDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String id;
-    
-    private String street1;
-    
-    private String street2;
-    
     private String city;
     
     private String county;
     
-    private String state;
-    
-    private String zip;
+    private String id;
     
     private String lat;
     
     private String lon;
     
+    private String state;
+    
+    private String street1;
+    
+    private String street2;
+    
+    private String zip;
+    
     //
     // trivial getters and setters
     //
+    
+    // city
+    
+    public void setCity(String str) {
+        this.city = str;
+    }
+    
+    public String getCity() {
+        return this.city;
+    }
+    
+    // county
+    
+    public void setCounty(String str) {
+        this.county = str;
+    }
+    
+    public String getCounty() {
+        return this.county;
+    }
     
     // id
     
@@ -110,6 +130,36 @@ public class AddressDvo implements Dvo {
     
     public String getId() {
         return this.id;
+    }
+    
+    // lat
+    
+    public void setLat(String str) {
+        this.lat = str;
+    }
+    
+    public String getLat() {
+        return this.lat;
+    }
+    
+    // lon
+    
+    public void setLon(String str) {
+        this.lon = str;
+    }
+    
+    public String getLon() {
+        return this.lon;
+    }
+    
+    // state
+    
+    public void setState(String str) {
+        this.state = str;
+    }
+    
+    public String getState() {
+        return this.state;
     }
     
     // street1
@@ -132,36 +182,6 @@ public class AddressDvo implements Dvo {
         return this.street2;
     }
     
-    // city
-    
-    public void setCity(String str) {
-        this.city = str;
-    }
-    
-    public String getCity() {
-        return this.city;
-    }
-    
-    // county
-    
-    public void setCounty(String str) {
-        this.county = str;
-    }
-    
-    public String getCounty() {
-        return this.county;
-    }
-    
-    // state
-    
-    public void setState(String str) {
-        this.state = str;
-    }
-    
-    public String getState() {
-        return this.state;
-    }
-    
     // zip
     
     public void setZip(String str) {
@@ -170,26 +190,6 @@ public class AddressDvo implements Dvo {
     
     public String getZip() {
         return this.zip;
-    }
-    
-    // lat
-    
-    public void setLat(String str) {
-        this.lat = str;
-    }
-    
-    public String getLat() {
-        return this.lat;
-    }
-    
-    // lon
-    
-    public void setLon(String str) {
-        this.lon = str;
-    }
-    
-    public String getLon() {
-        return this.lon;
     }
     
     //

@@ -23,8 +23,8 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "code",
-        "name",
-        "description"
+        "description",
+        "name"
     };
     
     //
@@ -41,8 +41,8 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "code",
-        "name",
-        "description"
+        "description",
+        "name"
     };
     
     //
@@ -51,8 +51,8 @@ public class PatientIdTypeDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "Code",
-        "Name",
-        "Description"
+        "Description",
+        "Name"
     };
     
     
@@ -64,9 +64,9 @@ public class PatientIdTypeDvo implements Dvo {
     
     private String code;
     
-    private String name;
-    
     private String description;
+    
+    private String name;
     
     //
     // trivial getters and setters
@@ -82,16 +82,6 @@ public class PatientIdTypeDvo implements Dvo {
         return this.code;
     }
     
-    // name
-    
-    public void setName(String str) {
-        this.name = str;
-    }
-    
-    public String getName() {
-        return this.name;
-    }
-    
     // description
     
     public void setDescription(String str) {
@@ -100,6 +90,16 @@ public class PatientIdTypeDvo implements Dvo {
     
     public String getDescription() {
         return this.description;
+    }
+    
+    // name
+    
+    public void setName(String str) {
+        this.name = str;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     //
