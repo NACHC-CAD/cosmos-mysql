@@ -213,7 +213,7 @@ select
     age.string_val age,
     sex.string_val sex,
     so.string_val sexual_orientation,
-    gi.string_val gender_identity,
+    gi.string_val gender_identity, 
     rce.string_val race,
     eth.string_val ethnicity,
     lan.string_val language,
