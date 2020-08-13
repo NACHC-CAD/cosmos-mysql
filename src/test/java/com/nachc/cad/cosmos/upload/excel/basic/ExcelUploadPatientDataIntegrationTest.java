@@ -1,5 +1,7 @@
 package com.nachc.cad.cosmos.upload.excel.basic;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.InputStream;
 import java.sql.Connection;
 
@@ -17,11 +19,24 @@ public class ExcelUploadPatientDataIntegrationTest {
 
 	@Test
 	public void shouldUplaodData() {
+		String fileName;
+		log.info("\n\n-----------------------------------------------------------\nStarting Upload...");
+		fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09-DUP.xlsx";
+		log.info(fileName);
+		doUpload(fileName);
+		log.info("\n\n-----------------------------------------------------------\nStarting Upload...");
+		fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09.xlsx";
+		log.info(fileName);
+		doUpload(fileName);
+	}
+
+	public void doUpload(String fileName) {
 		log.info("Starting test...");
 		log.info("Getting file");
-		InputStream in = FileUtil.getInputStream("/files/excel/no-phi-denver-health-patient-only-2020-08-9.xlsx");
+		InputStream in = FileUtil.getInputStream(fileName);
 		String sheetName = "Table 1 - Demographics";
 		log.info("Got inputstream: " + in);
+		assertTrue(in != null);
 		log.info("Getting connection");
 		Connection conn = ConnectionUtil.getMysqlConnection();
 		log.info("Getting data set");
@@ -30,5 +45,5 @@ public class ExcelUploadPatientDataIntegrationTest {
 		new ExcelUploadPatientData().uploadPatientData(in, sheetName, dataSetDvo, conn);
 		log.info("Done.");
 	}
-	
+
 }

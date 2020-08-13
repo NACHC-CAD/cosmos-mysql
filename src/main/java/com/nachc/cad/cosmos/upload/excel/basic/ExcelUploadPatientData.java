@@ -76,8 +76,8 @@ public class ExcelUploadPatientData {
 	//
 
 	private void processRow(Row row, ArrayList<PatientAttTypeDvo> params, String dataSetId, Connection conn) {
-		addPatient(row, dataSetId, conn);
-		addPatientAtts(row, params, dataSetId, conn);
+		PatientDvo patientDvo = addPatient(row, dataSetId, conn);
+		addPatientAtts(row, params, dataSetId, patientDvo, conn);
 	}
 
 	//
@@ -147,7 +147,7 @@ public class ExcelUploadPatientData {
 	// add patient attributes
 	//
 	
-	private void addPatientAtts(Row row, ArrayList<PatientAttTypeDvo> params, String dataSetId, Connection conn) {
+	private void addPatientAtts(Row row, ArrayList<PatientAttTypeDvo> params, String dataSetId, PatientDvo patientDvo, Connection conn) {
 		String patientId = ExcelUtil.getStringValue(row.getCell(0));
 		for(int i=0;i<params.size();i++) {
 			// get the cell and the att
@@ -162,7 +162,7 @@ public class ExcelUploadPatientData {
 			// set dvo values
 			dvo.setAttTypeId(att.getId());
 			dvo.setDataSetId(dataSetId);
-			dvo.setPatientId(patientId);
+			dvo.setPatientId(patientDvo.getId());
 			dvo.setStringVal(cellVal);
 			ExcelCellType type = ExcelUtil.getCellType(cell);
 			if(type.equals(ExcelCellType.DATE_TIME)) {
