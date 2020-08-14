@@ -1,10 +1,11 @@
-package com.nachc.cad.questionnaire.covid19.social;
+package com.integration.com.nachc.cad.fhirquestionnaire.covid19.social;
 
 import java.io.InputStream;
 
 import org.junit.Test;
 
 import com.nach.core.util.file.FileUtil;
+import com.nachc.cad.questionnaire.covid19.social.SocialDeterminantQuestionairreExelToFhir;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,5 +24,5 @@ public class SocialDeterminantQuestionairreExelToFhirIntegrationTest {
 		log.info("Got xml:\n\n" + xml + "\n\n");
 		log.info("Done.");
 	}
-	
+
 }

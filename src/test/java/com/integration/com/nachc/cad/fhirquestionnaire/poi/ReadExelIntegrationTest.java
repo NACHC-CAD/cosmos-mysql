@@ -1,4 +1,4 @@
-package integration.com.nachc.cad.fhirquestionnaire.poi;
+package com.integration.com.nachc.cad.fhirquestionnaire.poi;
 
 import static org.junit.Assert.assertTrue;
 

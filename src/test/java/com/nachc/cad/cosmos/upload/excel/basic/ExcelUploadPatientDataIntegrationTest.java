@@ -19,6 +19,10 @@ public class ExcelUploadPatientDataIntegrationTest {
 
 	@Test
 	public void shouldUplaodData() {
+		uploadFiles();
+	}
+
+	public static void uploadFiles() {
 		String fileName;
 		log.info("\n\n-----------------------------------------------------------\nStarting Upload...");
 		fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09-DUP.xlsx";
@@ -29,8 +33,8 @@ public class ExcelUploadPatientDataIntegrationTest {
 		log.info(fileName);
 		doUpload(fileName);
 	}
-
-	public void doUpload(String fileName) {
+	
+	private static void doUpload(String fileName) {
 		log.info("Starting test...");
 		log.info("Getting file");
 		InputStream in = FileUtil.getInputStream(fileName);
