@@ -8,11 +8,15 @@ import com.nachc.cad.cosmos.util.auth.AuthParams;
 public class ConnectionUtil {
 
 	public static Connection getMysqlConnection() {
+		return getMysqlConnection("cosmos");
+	}
+	
+	public static Connection getMysqlConnection(String schema) {
 		try {
 			String url = AuthParams.getMysqlUrl();
 			String uid = AuthParams.getMysqlUid();
 			String pwd = AuthParams.getMysqlPwd();
-			// Class.forName("com.mysql.jdbc.Driver");
+			url = url + schema;
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
 			return conn;
 		} catch(Exception exp) {

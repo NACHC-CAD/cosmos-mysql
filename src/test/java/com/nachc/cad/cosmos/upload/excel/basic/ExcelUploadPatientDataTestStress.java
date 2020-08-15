@@ -15,7 +15,7 @@ import com.nachc.cad.cosmos.util.proxy.DataSetProxy;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ExcelUploadPatientDataIntegrationTest {
+public class ExcelUploadPatientDataTestStress {
 
 	@Test
 	public void shouldUplaodData() {
@@ -25,17 +25,21 @@ public class ExcelUploadPatientDataIntegrationTest {
 	public static void uploadFiles() {
 		String fileName;
 		/*
-		log.info("\n\n-----------------------------------------------------------\nStarting Upload...");
-		fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09-DUP.xlsx";
-		log.info(fileName);
-		doUpload(fileName);
-		*/
-		log.info("\n\n-----------------------------------------------------------\nStarting Upload...");
-		fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09.xlsx";
-		log.info(fileName);
-		doUpload(fileName);
+		 * log.
+		 * info("\n\n-----------------------------------------------------------\nStarting Upload..."
+		 * ); fileName =
+		 * "/files/excel/no-phi-denver-health-patient-only-2020-08-09-DUP.xlsx";
+		 * log.info(fileName); doUpload(fileName);
+		 */
+		int max = 500;
+		for (int i = 0; i < max; i++) {
+			log.info("\n\n-----------------------------------------------------------\nFILE " + (i + 1) + " of " + max + " Starting Upload...");
+			fileName = "/files/excel/no-phi-denver-health-patient-only-2020-08-09.xlsx";
+			log.info(fileName);
+			doUpload(fileName);
+		}
 	}
-	
+
 	private static void doUpload(String fileName) {
 		log.info("Starting test...");
 		log.info("Getting file");

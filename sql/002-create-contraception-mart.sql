@@ -4,15 +4,16 @@ create schema contraception;
 
 use contraception;
 
-select * from cosmos.patient;
-
 --
 -- pivot table for contraception data
 -- 
+use cosmos;
 
-create view patient as  
+use contraception;
+
+create or replace view patient as  
 select
-	pat.*,
+	pat.string_val patient_id,
     age.string_val age,
     sex.string_val sex,
     so.string_val sexual_orientation,
@@ -28,8 +29,8 @@ select
     atc.string_val access_to_care,
 	trn.string_val transportation
 from
-	cosmos.patient pat
-    left outer join cosmos.patient_att age on age.att_type_id =  2 and age.patient_id = pat.id
+	cosmos.patient_att pat
+    left outer join cosmos.patient_att age  on age.att_type_id =  2 and age.patient_id = pat.id 
     left outer join cosmos.patient_att sex on sex.att_type_id =  3 and sex.patient_id = pat.id
     left outer join cosmos.patient_att so  on so.att_type_id  =  4 and so.patient_id = pat.id
     left outer join cosmos.patient_att gi  on gi.att_type_id  =  5 and gi.patient_id = pat.id
@@ -44,3 +45,6 @@ from
     left outer join cosmos.patient_att atc on atc.att_type_id = 12 and atc.patient_id = pat.id
     left outer join cosmos.patient_att trn on trn.att_type_id = 12 and trn.patient_id = pat.id
 ;
+
+
+select * from cosmos.patient_att;
