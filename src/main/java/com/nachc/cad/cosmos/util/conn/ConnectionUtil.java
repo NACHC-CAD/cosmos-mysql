@@ -17,6 +17,7 @@ public class ConnectionUtil {
 			String uid = AuthParams.getMysqlUid();
 			String pwd = AuthParams.getMysqlPwd();
 			url = url + schema;
+			url = url + "?rewriteBatchedStatements=true";
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
 			return conn;
 		} catch(Exception exp) {

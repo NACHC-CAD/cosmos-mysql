@@ -22,7 +22,7 @@ public class DataSetProxy {
 		dvo.setDescription(description);
 		dvo.setProjectId(projectId);
 		Dao.insert(dvo, conn);
-		dvo  = Database.find(dvo, "guid", dvo.getGuid(), conn);
+		dvo  = Dao.find(dvo, "guid", dvo.getGuid(), conn);
 		return dvo;
 	}
 

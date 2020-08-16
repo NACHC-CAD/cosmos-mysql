@@ -5,8 +5,11 @@ import static org.junit.Assert.assertTrue;
 import java.io.InputStream;
 import java.sql.Connection;
 
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
+import com.nach.core.util.excel.ExcelUtil;
 import com.nach.core.util.file.FileUtil;
 import com.nachc.cad.cosmos.dvo.DataSetDvo;
 import com.nachc.cad.cosmos.util.conn.ConnectionUtil;
@@ -44,15 +47,17 @@ public class ExcelUploadPatientDataTestStress {
 		log.info("Starting test...");
 		log.info("Getting file");
 		InputStream in = FileUtil.getInputStream(fileName);
-		String sheetName = "Table 1 - Demographics";
 		log.info("Got inputstream: " + in);
 		assertTrue(in != null);
+		log.info("Getting workbook and sheet");
+		Workbook book = ExcelUtil.getWorkbook(in);
+		Sheet sheet = ExcelUtil.getSheet(book, "Table 1 - Demographics");
 		log.info("Getting connection");
 		Connection conn = ConnectionUtil.getMysqlConnection();
 		log.info("Getting data set");
 		DataSetDvo dataSetDvo = DataSetProxy.createTestDataSet(conn);
 		log.info("Starting upload");
-		new ExcelUploadPatientData().uploadPatientData(in, sheetName, dataSetDvo, conn);
+		ExcelUploadPatientData.uploadPatientData(sheet, dataSetDvo, conn);
 		log.info("Done.");
 	}
 

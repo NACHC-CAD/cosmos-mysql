@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.yaorma.dao.Dao;
 import org.yaorma.database.Database;
 
 import com.nachc.cad.cosmos.dvo.PatientAttTypeDvo;
@@ -24,7 +25,7 @@ public class PatientAttTypeProxy {
 			rs = Database.executeQuery(sqlString, params, conn);
 			if (rs.next()) {
 				rtn = new PatientAttTypeDvo();
-				Database.load(rtn, rs);
+				Dao.load(rtn, rs);
 			}
 			return rtn;
 		} catch(Exception exp) {

@@ -116,3 +116,45 @@ from
 -- group by 1,2,3
 ;
 
+use cosmos;
+
+select * from patient;
+
+select data_set_id, count(*) from patient group by 1;
+
+select * from patient;
+
+select * from data_set;
+
+select * from patient_att;
+
+insert into patient_att (patient_id, att_type_id, string_val)
+values ((select id from patient where guid='e81bd80d-f0a3-43ed-ac46-43cb717a0931'), 1, 'Test');
+
+rollback;
+
+use cosmos;
+
+select count(*) from patient;
+
+select * from patient order by id desc;
+
+select * from patient where data_set_id = 27;
+
+select * from data_set order by id desc;
+
+select * from information_schema.tables where table_name = 'patient';
+
+select * from cosmos.patient where data_set_id = '33';
+
+select * from patient where data_set_id = 56 order by patient_id asc;
+
+select * from patient where data_set_id = 56 order by patient_id desc;
+
+select count(*) from patient where data_set_id = 56;
+
+select count(distinct patient_id) from patient where data_set_id = 56;
+
+
+
+

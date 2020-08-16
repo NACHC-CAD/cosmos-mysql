@@ -39,7 +39,7 @@ drop index attribute_idx_03 on attribute;
 -- queries 
 -- 
 
-select count(*) from attribute;
+select count(1) from attribute;
 
 select * from attribute;
 
@@ -49,13 +49,14 @@ select
     city.string_val city,
     gen.string_val gender,
     pet.string_val pet,
-    count(distinct att.subject_id)
+    count(distinct att.subject_id) cnt
 from
 	attribute att
     join attribute city on att.subject_id = city.subject_id and city.att_code = 'CITY'
     join attribute gen on att.subject_id = gen.subject_id and gen.att_code = 'GENDER'
     join attribute pet on att.subject_id = pet.subject_id and pet.att_code = 'PET'
 where 1=1
+	and city.string_val = 'Boston'
 group by 1,2,3
 order by city,gender,pet
 ;
