@@ -3,7 +3,9 @@ package com.nachc.cad.cosmos.upload.excel.basic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,8 +18,8 @@ import com.nach.core.util.excel.ExcelUtil;
 import com.nach.core.util.excel.enumeration.ExcelCellType;
 import com.nach.core.util.guid.GuidFactory;
 import com.nachc.cad.cosmos.dvo.DataSetDvo;
-import com.nachc.cad.cosmos.dvo.PatientAttDvo;
 import com.nachc.cad.cosmos.dvo.PatientAttTypeDvo;
+import com.nachc.cad.cosmos.dvo.PatientDvo;
 import com.nachc.cad.cosmos.util.proxy.PatientAttTypeProxy;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,14 +40,16 @@ public class ExcelUploadPatientData {
 		log.debug("Getting params");
 		ArrayList<String> paramNames = getParameterNames(sheet);
 		ArrayList<PatientAttTypeDvo> paramTypes = addPatientAttTypes(paramNames, dataSetDvo, conn);
-		// iterate through each row of the sheet
-		log.debug("Getting rows");
-		Iterator<Row> rows = ExcelUtil.getRows(sheet);
-		int lastRow = sheet.getLastRowNum();
 		// get the prepared statements
-		PreparedStatement psForPatInsert = getPreparedStatementForPatientInsert(conn);
+		PreparedStatement ps = getPreparedStatementForPatientInsert(conn);
 		PreparedStatement psForAttInsert = getPreparedStatementForPatientAttributeInsert(conn);
 		log.debug("Uploading rows...");
+		// hash map to store guids by rownum
+		HashMap<String, String> guidRowNum = new HashMap<String, String>();
+		// iterate through each row of the sheet
+		log.debug("Getting rows");
+		int lastRow = sheet.getLastRowNum();
+		Iterator<Row> rows = ExcelUtil.getRows(sheet);
 		while (rows.hasNext()) {
 			// get the row
 			Row row = rows.next();
@@ -60,35 +64,38 @@ public class ExcelUploadPatientData {
 				continue;
 			}
 			// echo progress
-			if (row.getRowNum() % 100 == 0) {
+			if (row.getRowNum() % 1000 == 0) {
 				log.debug("Processing Row: " + row.getRowNum() + " of " + lastRow);
 				log.debug("Doing patient insert");
-				Database.execute(psForPatInsert, false);
+				Database.execute(ps, false);
 				log.debug("Doing attribute insert");
 				Database.execute(psForAttInsert, false);
 				log.debug("Done with inserts");
 			}
 			// process the row
-			String guid = addPatient(row, dataSetDvo.getId(), psForPatInsert);
-			addPatientAtts(row, paramTypes, dataSetDvo.getId(), guid, psForAttInsert);
+			String guid = addPatient(row, dataSetDvo.getId(), ps);
+			guidRowNum.put(guid, row.getRowNum() + "");
 		}
 		// write to the database
-		Database.execute(psForPatInsert, true);
-		Database.execute(psForAttInsert, true);
+		log.debug("Writing last recods to databasse");
+		Database.execute(ps, true);
+		log.debug("Getting patients from database");
+		List<PatientDvo> patients = Dao.findList(new PatientDvo(), "select * from patient where data_set_id = ?", dataSetDvo.getId(), conn);
+		HashMap<String, String> rowNumPatientId = new HashMap<String, String>();
+		for(PatientDvo patientDvo : patients) {
+			String guid = patientDvo.getGuid();
+			String rowNum = guidRowNum.get(guid);
+			String patientId = patientDvo.getId();
+			rowNumPatientId.put(rowNum, patientId);
+		}
+		log.debug("Got " + patients.size() + " patients");
+		log.debug("Got " + guidRowNum.size() + " rowNums");
+		log.debug("Got " + rowNumPatientId.size() + " ids");
+		addPatientAtts(sheet, paramTypes, dataSetDvo.getId(), rowNumPatientId, conn);
 		// done
 		log.debug("Done uploading data for sheet: " + sheet.getSheetName());
 	}
-
-	//
-	// process row
-	//
-
-	/*
-	 * private static void processRow(Row row, ArrayList<PatientAttTypeDvo> params,
-	 * String dataSetId, Connection conn) { PatientDvo patientDvo = addPatient(row,
-	 * dataSetId, conn); addPatientAtts(row, params, dataSetId, patientDvo, conn); }
-	 */
-
+	
 	//
 	// get the list of parameter names
 	//
@@ -157,8 +164,43 @@ public class ExcelUploadPatientData {
 	// add patient attributes
 	//
 
-	private static void addPatientAtts(Row row, ArrayList<PatientAttTypeDvo> paramTypes, String dataSetId, String patientGuid, PreparedStatement ps) {
-		String patientId = ExcelUtil.getStringValue(row.getCell(0));
+	private static void addPatientAtts(Sheet sheet, ArrayList<PatientAttTypeDvo> paramTypes, String dataSetId, HashMap<String, String> rowNumPatientId, Connection conn) {
+		PreparedStatement ps = getPreparedStatementForPatientAttributeInsert(conn);
+		int lastRow = sheet.getLastRowNum();
+		Iterator<Row> rows = ExcelUtil.getRows(sheet);
+		while (rows.hasNext()) {
+			// get the row
+			Row row = rows.next();
+			// skip the first row (it's the header row)
+			if (row.getRowNum() == 0) {
+				continue;
+			}
+			// get the patient id
+			String patientId = ExcelUtil.getStringValue(row.getCell(0));
+			// skip if patient id is empty
+			if (StringUtils.isEmpty(patientId)) {
+				continue;
+			}
+			// echo progress
+			int max = 1000;
+			if (row.getRowNum() % max == 0) {
+				log.debug("Processing Row: " + row.getRowNum() + " of " + lastRow);
+				log.debug("Writing records to database...");
+				Database.execute(ps, false);
+				log.debug("Done with inserts");
+			}
+			// process the row
+			String patientPk = rowNumPatientId.get(row.getRowNum() + "");
+			addPatientAttsForRow(row, paramTypes, dataSetId, patientPk, ps);
+		}
+		// write to the database
+		log.debug("Writing last recods to databasse");
+		Database.execute(ps, true);
+		log.debug("Done with inserts for last records");
+	}
+
+	
+	private static void addPatientAttsForRow(Row row, ArrayList<PatientAttTypeDvo> paramTypes, String dataSetId, String patientId, PreparedStatement ps) {
 		for (int i = 0; i < paramTypes.size(); i++) {
 			// get the cell and the att
 			Cell cell = row.getCell(i);
@@ -170,7 +212,7 @@ public class ExcelUploadPatientData {
 			// create the parameters
 			ArrayList<String> params = new ArrayList<String>();
 			params.add(dataSetId);
-			params.add(patientGuid);
+			params.add(patientId);
 			params.add(att.getId());
 			params.add(cellVal);
 			// set dvo values
@@ -198,7 +240,7 @@ public class ExcelUploadPatientData {
 	private static PreparedStatement getPreparedStatementForPatientAttributeInsert(Connection conn) {
 		String sqlString = "";
 		sqlString += "insert into patient_att (data_set_id, patient_id, att_type_id, string_val, date_val, num_val) ";
-		sqlString += "values(?,(select id from patient where guid=?), ?, ?,?,?)";
+		sqlString += "values(?,?,?, ?,?,?)";
 		PreparedStatement rtn = Database.getPreparedStatement(sqlString, conn);
 		return rtn;
 	}

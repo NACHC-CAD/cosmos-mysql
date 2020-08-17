@@ -13,7 +13,9 @@ use contraception;
 
 create or replace view patient as  
 select
-	pat.string_val patient_id,
+	pat.data_set_id,
+    pat.id patient_pk,
+	pat.patient_id patient_id,
     age.string_val age,
     sex.string_val sex,
     so.string_val sexual_orientation,
@@ -29,7 +31,7 @@ select
     atc.string_val access_to_care,
 	trn.string_val transportation
 from
-	cosmos.patient_att pat
+	cosmos.patient pat
     left outer join cosmos.patient_att age  on age.att_type_id =  2 and age.patient_id = pat.id 
     left outer join cosmos.patient_att sex on sex.att_type_id =  3 and sex.patient_id = pat.id
     left outer join cosmos.patient_att so  on so.att_type_id  =  4 and so.patient_id = pat.id
@@ -46,5 +48,8 @@ from
     left outer join cosmos.patient_att trn on trn.att_type_id = 12 and trn.patient_id = pat.id
 ;
 
+select * from cosmos.patient_att where data_set_id = 80;
 
-select * from cosmos.patient_att;
+select * from patient where data_set_id = 80;
+
+select * from cosmos.patient where id = 6034;
